@@ -1,0 +1,12 @@
+- hosts: masters[0]
+  become: yes
+  vars:
+    master1: "{{ ansible_eth0.ipv4.address }}"
+  tasks:
+    - name: initialize the cluster
+      shell: "kubeadm init --control-plane-endpoint \"{{  master1  }}:6443\" --upload-certs"
+
+
+
+
+
